@@ -1,16 +1,61 @@
-# React + Vite
+# Agentic App Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent platform that converts natural language project descriptions into fully functional, production-ready React applications.
 
-Currently, two official plugins are available:
+## 🚀 Problem Statement
+The goal is to build an **Agentic App Builder** that bridges the gap between a high-level idea (problem statement) and a deployable prototype. This requires complex orchestration logic to manage context across different stages of development, ensuring that the generated code is not only functional but also adaptable through iterative feedback.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏗️ The Orchestration Logic
+Our implementation uses a multi-stage agentic workflow to ensure high-quality output and maintain context:
 
-## React Compiler
+1.  **Context Analysis & Planning**: The system first analyzes the user's problem statement to determine the necessary features, state management, and component architecture. This creates a "Blueprint" before any code is written.
+2.  **Pattern Selection**: Based on the plan, the agent selects appropriate React patterns (Functional components, Hooks, Context API) and styling strategies.
+3.  **Code Prototyping**: Generating multiple files (JSX, CSS) that work together seamlessly.
+4.  **Sandbox Rendering**: A custom-built live preview engine using Babel Standalone that transpiles and executes the generated code in real-time.
+5.  **Continuous Improvement Loop**: An integrated chat interface allows users to provide feedback, triggering the "Improvement Agent" to refine the existing codebase while maintaining the original project context.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📊 System Architecture
 
-## Expanding the ESLint configuration
+![System Architecture Diagram](/Users/npai/Desktop/ML_PROJECTS/agent-app-builder/docs/assets/architecture_diagram.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Core Components:
+- **`App.jsx`**: The central orchestrator (State Machine) managing the workflow stages.
+- **`aiService.js`**: Interfaces with GPT-4o, handling prompt engineering and code parsing.
+- **`PreviewWindow.jsx`**: A sandboxed environment for live transpilation and previewing.
+- **`ChatWindow.jsx`**: The feedback loop enabling iterative changes and constant app improvement.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js & npm
+- OpenAI API Key
+
+### Setup
+1.  **Clone the repository**:
+    ```bash
+    git clone [repository-url]
+    cd agent-app-builder
+    ```
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Configure Environment**:
+    Create a `.env` file in the root directory and add your OpenAI API key:
+    ```env
+    VITE_OPENAI_API_KEY=your_actual_key_here
+    ```
+4.  **Run the application**:
+    ```bash
+    npm run dev
+    ```
+
+## 🔄 Iterative Improvement & Success
+To ensure successful iterations, the agent maintains the **entire project context** (original prompt, current code, and history of changes) in its memory. When a user requests a change via the chat window, the agent analyzes the existing code structure and performs targeted updates rather than starting from scratch, ensuring stability and incremental growth of the application.
+
+## 🏆 MVP Features
+- ✅ Natural Language to React generation.
+- ✅ Multi-file code generation (App.jsx, Components, CSS).
+- ✅ Real-time browser-based preview.
+- ✅ Downloadable ZIP for local development.
+- ✅ Agentic chat feedback loop for refinements.

@@ -1,8 +1,12 @@
 import React from 'react';
 import './PromptInput.css';
 
-export default function PromptInput({ onSubmit, isLoading }) {
-    const [prompt, setPrompt] = React.useState('');
+export default function PromptInput({ onSubmit, isLoading, initialValue = '' }) {
+    const [prompt, setPrompt] = React.useState(initialValue);
+
+    React.useEffect(() => {
+        setPrompt(initialValue);
+    }, [initialValue]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,7 +28,17 @@ export default function PromptInput({ onSubmit, isLoading }) {
             </h1>
             <p className="app-subtitle">Describe your app idea and watch it come to life</p>
 
-            <form onSubmit={handleSubmit} className="prompt-form">
+            <form onSubmit={handleSubmit} className={`prompt-form ${isLoading ? 'loading' : ''}`}>
+                {isLoading && (
+                    <div className="loading-overlay">
+                        <div className="loading-content">
+                            <div className="professional-spinner"></div>
+                            <h3>Generating implementation plan...</h3>
+                            <p>Analyzing requirements and architecting your solution</p>
+                        </div>
+                    </div>
+                )}
+
                 <textarea
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
@@ -53,7 +67,7 @@ Examples:
                         {isLoading ? (
                             <>
                                 <span className="spinner"></span>
-                                Generating Plan...
+                                Generating...
                             </>
                         ) : (
                             <>

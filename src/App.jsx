@@ -150,17 +150,11 @@ function App() {
           </div>
         )}
 
-        {state === STATES.PROMPT && (
+        {(state === STATES.PROMPT || state === STATES.GENERATING_PLAN) && (
           <PromptInput
             onSubmit={handlePromptSubmit}
-            isLoading={false}
-          />
-        )}
-
-        {state === STATES.GENERATING_PLAN && (
-          <PromptInput
-            onSubmit={handlePromptSubmit}
-            isLoading={true}
+            isLoading={state === STATES.GENERATING_PLAN}
+            initialValue={userPrompt}
           />
         )}
 
