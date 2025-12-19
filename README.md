@@ -16,7 +16,7 @@ Our implementation uses a multi-stage agentic workflow to ensure high-quality ou
 
 ## 📊 System Architecture
 
-![System Architecture Diagram](/Users/npai/Desktop/ML_PROJECTS/agent-app-builder/docs/assets/architecture_diagram.png)
+![System Architecture Diagram](/Users/npai/Desktop/ML_PROJECTS/agent-app-builder/docs/assets/architecture_diagram_v3.png)
 
 ### Core Components:
 - **`App.jsx`**: The central orchestrator (State Machine) managing the workflow stages.

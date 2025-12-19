@@ -2,6 +2,10 @@
 
 This document provides a technical overview of the Agent App Builder architecture, detailing how it transforms natural language prompts into live, interactive React applications.
 
+## Visual Workflow
+
+![System Architecture Diagram](/Users/npai/Desktop/ML_PROJECTS/agent-app-builder/docs/assets/architecture_diagram_v3.png)
+
 ## High-Level Architecture
 
 The system follows a state-machine driven workflow, orchestrating interactions between the user, the AI service, and a dynamic preview environment.
